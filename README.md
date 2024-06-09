@@ -1,12 +1,14 @@
 # Exchange-Rate-Forecasting-using-MLP-Neural-Networks
 
+
 1. Introduction
 
       *Objective: The main goal was to develop a predictive model for the USD/EUR exchange rate using historical data.
    
       *Methods Used: Employed a neural network approach, specifically a Multi-Layer Perceptron (MLP), to forecast future exchange rates.
    
-3. Data Preparation
+   
+2. Data Preparation
 
       *Dataset: Mention the source and type of the data (exchange rates over time).
 
@@ -20,6 +22,7 @@
           return(x)
         }
    
+   
 3. Feature Engineering
 
       *Time-Delayed Matrix: Created input features with lagged values to capture temporal dependencies.
@@ -31,14 +34,16 @@
           t1 = lag(exchange_rate,2),
           exchange_rateRate = exchange_rate) 
         delayed_matrix <- na.omit(time_delayed_matrix)
+
    
-5. Data Normalization
+4. Data Normalization
 
       *Purpose: Normalization helps in improving the convergence speed of neural networks and ensures that each input feature contributes equally to the learning process.
 
         normalization <- function(x){
           return ((x - min(x)) / (max(x) - min(x)))
         }
+
    
 5. Model Training
 
@@ -59,6 +64,7 @@
           # Accuracy and error calculations
           return(unuralormalised_predict)
         }
+
    
 7. Model Evaluation
 
@@ -68,6 +74,7 @@
         mae <- mae(first_data_output, predictions)
         mape <- mape(first_data_output, predictions)
         smape <- smape(first_data_output, predictions)
+
    
 7. Results and Interpretation
 
@@ -80,6 +87,7 @@
         )
         best_model <- ModelTrain(exchange_rateRate ~ t1 + t2 + t3, best_config$hidden_layers, isLinear = TRUE, "logistic", best_config$input_count, best_config$hidden_layers)
         predictions <- ModelTest(best_model, t3_testDataSet, best_config$input_count, best_config$hidden_layers)
+
    
 9. Visualization
 
